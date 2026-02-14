@@ -2,14 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+import { navData, personalInfo } from "@/data/portfolio-data";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -18,12 +11,12 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#" className="text-xl font-heading font-bold text-gradient-gold">
-          Omar<span className="text-primary">.</span>
+          {personalInfo.name}
         </a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navData.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -33,7 +26,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button size="sm" asChild>
-            <a href="#resume">Resume</a>
+            <a href={navData.resumeLink.href}>{navData.resumeLink.label}</a>
           </Button>
         </div>
 
@@ -47,7 +40,7 @@ const Navbar = () => {
           <SheetContent side="right" className="bg-background border-border">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="flex flex-col gap-6 mt-8">
-              {navLinks.map((link) => (
+              {navData.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -58,7 +51,7 @@ const Navbar = () => {
                 </a>
               ))}
               <Button asChild>
-                <a href="#resume" onClick={() => setOpen(false)}>Resume</a>
+                <a href={navData.resumeLink.href} onClick={() => setOpen(false)}>{navData.resumeLink.label}</a>
               </Button>
             </div>
           </SheetContent>

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { resumeData } from "@/data/portfolio-data";
+import resume from "@/assets/resume.pdf";
 
 const ResumeSection = () => {
   return (
@@ -18,13 +20,12 @@ const ResumeSection = () => {
           </h2>
           <div className="section-divider w-24 mx-auto mb-8" />
           <p className="text-muted-foreground mb-8">
-            Interested in working together? Download my resume to learn more about my skills,
-            experience, and qualifications.
+            {resumeData.description}
           </p>
           <Button size="lg" className="gap-2" asChild>
-            <a href="/resume.pdf" download>
+            <a href={resume} download>
               <Download className="h-5 w-5" />
-              Download CV
+              <span>Download CV</span>
             </a>
           </Button>
         </motion.div>

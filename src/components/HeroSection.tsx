@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { heroData, socialLinks } from "@/data/portfolio-data";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center geometric-pattern overflow-hidden">
-      {/* Gradient orbs */}
+      
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
@@ -17,7 +18,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-primary font-medium mb-4 tracking-widest uppercase text-sm">
-              Full Stack Developer
+              {heroData.subtitle}
             </p>
           </motion.div>
 
@@ -28,7 +29,7 @@ const HeroSection = () => {
             className="text-5xl sm:text-7xl font-heading font-bold mb-6"
           >
             Hi, I'm{" "}
-            <span className="text-gradient-gold">Omar</span>
+            <span className="text-gradient-gold">{heroData.name}</span>
           </motion.h1>
 
           <motion.p
@@ -37,9 +38,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl mx-auto"
           >
-            Coop trainee at{" "}
-            <span className="text-foreground font-medium">Takamol Holding</span>,
-            building modern web apps with React & Spring Boot from Saudi Arabia 🇸🇦
+            {heroData.tagline}
           </motion.p>
 
           <motion.div
@@ -49,10 +48,10 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
             <Button size="lg" asChild>
-              <a href="#projects">View My Work</a>
+              <a href={heroData.cta.primary.href}>{heroData.cta.primary.text}</a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="#contact">Contact Me</a>
+              <a href={heroData.cta.secondary.href}>{heroData.cta.secondary.text}</a>
             </Button>
           </motion.div>
 
@@ -62,13 +61,13 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex justify-center gap-5"
           >
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <Github className="h-5 w-5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="mailto:omar@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href={socialLinks.email} className="text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-5 w-5" />
             </a>
           </motion.div>

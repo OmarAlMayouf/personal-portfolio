@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { contactData, socialLinks } from "@/data/portfolio-data";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -12,7 +13,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message sent!", description: "Thanks for reaching out. I'll get back to you soon." });
+    toast({ title: contactData.toast.title, description: contactData.toast.description });
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -38,30 +39,30 @@ const ContactSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-heading font-bold mb-4 text-foreground">Let's connect</h3>
+            <h3 className="text-xl font-heading font-bold mb-4 text-foreground">{contactData.heading}</h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Whether you have an opportunity, a question, or just want to say hello — feel free to reach out!
+              {contactData.description}
             </p>
 
             <div className="space-y-4">
-              <a href="mailto:omar@example.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href={socialLinks.email} className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-5 w-5 text-primary" />
-                omar@example.com
+                {contactData.email}
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="h-5 w-5 text-primary" />
-                Saudi Arabia 🇸🇦
+                {contactData.location}
               </div>
             </div>
 
             <div className="flex gap-4 mt-8">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="mailto:omar@example.com" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a href={socialLinks.email} className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -108,7 +109,7 @@ const ContactSection = () => {
       {/* Footer */}
       <div className="container mx-auto px-4 mt-20 pt-8 border-t border-border">
         <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Omar. Built with ❤️ in Saudi Arabia.
+          {contactData.footer}
         </p>
       </div>
     </section>

@@ -1,34 +1,5 @@
 import { motion } from "framer-motion";
-
-const skillCategories = [
-  {
-    title: "Frontend",
-    skills: [
-      { name: "React", level: 85 },
-      { name: "TypeScript", level: 75 },
-      { name: "HTML/CSS", level: 90 },
-      { name: "Tailwind CSS", level: 80 },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "Spring Boot", level: 80 },
-      { name: "Java", level: 80 },
-      { name: "REST APIs", level: 85 },
-      { name: "PostgreSQL", level: 70 },
-    ],
-  },
-  {
-    title: "Tools & Other",
-    skills: [
-      { name: "Git & GitHub", level: 85 },
-      { name: "Docker", level: 60 },
-      { name: "Agile/Scrum", level: 75 },
-      { name: "Linux", level: 65 },
-    ],
-  },
-];
+import { skillsData } from "@/data/portfolio-data";
 
 const SkillsSection = () => {
   return (
@@ -47,7 +18,7 @@ const SkillsSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {skillCategories.map((cat, catIndex) => (
+          {skillsData.map((cat, catIndex) => (
             <motion.div
               key={cat.title}
               initial={{ opacity: 0, y: 40 }}
