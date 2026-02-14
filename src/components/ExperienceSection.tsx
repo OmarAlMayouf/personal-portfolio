@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { experiencesData } from "@/data/portfolio-data";
 import { ChevronDown } from "lucide-react";
@@ -86,7 +86,6 @@ const ExperienceSection = () => {
             </motion.div>
           ))}
 
-          {/* Preview of next experience when not showing all */}
           {hasMoreExperiences && experiencesData[visibleCount] && (
             <motion.div
               key={`preview-${visibleCount}`}
@@ -117,7 +116,6 @@ const ExperienceSection = () => {
             </motion.div>
           )}
 
-          {/* Show More/Less Button */}
           {(hasMoreExperiences || showingAll) && experiencesData.length > EXPERIENCES_INITIAL_DISPLAY_COUNT && (
             <motion.div
               initial={{ opacity: 0 }}
