@@ -143,58 +143,28 @@ export const skillsData = [
 // Projects Section
 export const projectsData = [
   {
-    title: "E-Commerce Dashboard",
-    description:
-      "A full-stack admin dashboard for managing products, orders, and analytics with real-time data visualization.",
-    tech: ["React", "Spring Boot", "PostgreSQL", "Chart.js"],
-    image: "🛒",
+    title: "Spring Redis Rate Limiter",
+    description: "",
+    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
+    image: "",
     github: "https://github.com",
-    demo: "#",
+    demo: "",
   },
   {
-    title: "Task Management App",
-    description:
-      "A collaborative task manager with drag-and-drop boards, real-time updates, and team management features.",
-    tech: ["React", "TypeScript", "REST API", "Tailwind"],
-    image: "📋",
+    title: "Spring Redis Rate Limiter",
+    description: "",
+    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
+    image: "",
     github: "https://github.com",
-    demo: "#",
+    demo: "",
   },
   {
-    title: "Weather Forecast App",
-    description:
-      "A beautiful weather application with location-based forecasts, interactive maps, and 7-day predictions.",
-    tech: ["React", "API Integration", "CSS3", "Geolocation"],
-    image: "🌤️",
+    title: "Spring Redis Rate Limiter",
+    description: "",
+    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
+    image: "",
     github: "https://github.com",
-    demo: "#",
-  },
-  {
-    title: "E-Commerce Dashboard",
-    description:
-      "A full-stack admin dashboard for managing products, orders, and analytics with real-time data visualization.",
-    tech: ["React", "Spring Boot", "PostgreSQL", "Chart.js"],
-    image: "🛒",
-    github: "https://github.com",
-    demo: "#",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative task manager with drag-and-drop boards, real-time updates, and team management features.",
-    tech: ["React", "TypeScript", "REST API", "Tailwind"],
-    image: "📋",
-    github: "https://github.com",
-    demo: "#",
-  },
-  {
-    title: "Weather Forecast App",
-    description:
-      "A beautiful weather application with location-based forecasts, interactive maps, and 7-day predictions.",
-    tech: ["React", "API Integration", "CSS3", "Geolocation"],
-    image: "🌤️",
-    github: "https://github.com",
-    demo: "#",
+    demo: "",
   },
 ];
 

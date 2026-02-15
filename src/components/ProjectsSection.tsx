@@ -42,28 +42,51 @@ const ProjectsSection = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-heading font-bold text-foreground mb-2">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {project.tech.map((t) => (
-                    <Badge key={t} variant="secondary" className="text-xs bg-secondary border-border">
+                    <Badge
+                      key={t}
+                      variant="secondary"
+                      className="text-xs bg-secondary border-border"
+                    >
                       {t}
                     </Badge>
                   ))}
                 </div>
 
                 <div className="flex gap-3">
-                  <Button size="sm" variant="outline" className="flex-1 gap-2" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 gap-2"
+                    asChild
+                  >
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Github className="h-4 w-4" /> Code
                     </a>
                   </Button>
-                  <Button size="sm" className="flex-1 gap-2" asChild>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" /> Live
-                    </a>
-                  </Button>
+                  {project.demo && (
+                    <Button size="sm" className="flex-1 gap-2" asChild>
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-4 w-4" /> Live
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -84,7 +107,9 @@ const ProjectsSection = () => {
               onClick={() => setShowAll(!showAll)}
               className="gap-2"
             >
-              {showAll ? "Show Less" : `Show All Projects (${projectsData.length})`}
+              {showAll
+                ? "Show Less"
+                : `Show All Projects (${projectsData.length})`}
             </Button>
           </motion.div>
         )}
