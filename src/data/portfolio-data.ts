@@ -182,16 +182,24 @@ export const projectsData = [
     title: "Pharmaseek - Web App (Graduation Project)",
     description:
       "A web application for admins that allows them to manage pharmacy inventory such as adding, editing, and removing entries per branch, managing branches, view dashboard analytics, and handle user inquiries.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Appwrite", "Figma", "Agile"],
+    github: "https://github.com/OmarAlMayouf/Pharmaseek-Admin-Portal",
+    demo: "",
+  },
+  {
+    title: "Personal Portfolio Website",
+    description:
+      "A modern, responsive portfolio built with React and TypeScript to showcase projects, technical skills, and experience. Designed with reusable components, a clean UI, and integrated email functionality for direct contact.",
     tech: [
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "Appwrite",
-      "Figma",
-      "Agile",
+      "Vite",
+      "shadcn-ui",
+      "EmailJS",
     ],
-    github: "https://github.com/OmarAlMayouf/Pharmaseek-Admin-Portal",
-    demo: "",
+    github: "https://github.com/OmarAlMayouf/personal-portfolio",
+    demo: "https://omaralmayouf.github.io/personal-portfolio",
   },
   {
     title: "Dev Daily Tasks",
@@ -202,6 +210,15 @@ export const projectsData = [
     demo: "https://omaralmayouf.github.io/dev-daily-tasks",
   },
   {
+    title: "Movie & TV Show Ratings Web App",
+    description:
+      "A web application that allows users to browse, rate, and explore movies and TV shows with an interactive interface powered by React and Firebase.",
+    tech: ["React", "Vite", "Firebase", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/OmarAlMayouf/Movie_Ratings",
+    demo: "https://omaralmayouf.github.io/Movie_Ratings/",
+  },
+
+  {
     title: "Pharmacy Inventory Management System",
     description:
       "A web-based system for managing pharmacy inventory, tracking stock levels and expiration dates. Built with Django backend and a responsive Bootstrap-based frontend.",
@@ -210,14 +227,6 @@ export const projectsData = [
     demo: "",
   },
   {
-    title: "Movie & TV Show Ratings Web App",
-    description:
-      "A web application that allows users to browse, rate, and explore movies and TV shows with an interactive interface powered by React and Firebase.",
-    tech: ["React", "Vite", "Firebase", "Tailwind CSS", "JavaScript"],
-    github: "https://github.com/OmarAlMayouf/Movie_Ratings",
-    demo: "https://omaralmayouf.github.io/Movie_Ratings/",
-  },
-    {
     title: "Car Sales App",
     description:
       "A C2C mobile app enabling users to buy and sell cars securely. Features vehicle listings, browsing, and direct user communication in a clean and responsive interface.",
