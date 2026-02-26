@@ -16,9 +16,7 @@ const ProjectsSection = () => {
     else setVisibleCount((prev) => Math.min(prev + PROJECTS_INITIAL_DISPLAY_COUNT, projectsData.length));
   };
 
-  // Calculate how many blurred previews to show
   const remaining = projectsData.length - visibleCount;
-  // For mobile: 1 preview, for md: up to 2, for lg: up to 3
   const previewCount = Math.min(remaining, 3);
   const previewProjects = Array.from({ length: previewCount }, (_, idx) => projectsData[visibleCount + idx]);
 
@@ -44,7 +42,7 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: "easeInOut" }}
               className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col"
             >
               <div className="p-6 flex flex-col h-full">
@@ -96,7 +94,7 @@ const ProjectsSection = () => {
               key={`preview-${visibleCount + idx}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
+              transition={{ duration: 0.25, delay: 0.15 + idx * 0.07, ease: "easeOut" }}
               className={
                 `group bg-card border border-border rounded-2xl overflow-hidden blur-sm pointer-events-none select-none opacity-50 h-full flex flex-col ` +
                 (idx > 0 ? 'hidden ' : '') +
@@ -132,7 +130,7 @@ const ProjectsSection = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="flex justify-center mt-12"
           >
             <button
