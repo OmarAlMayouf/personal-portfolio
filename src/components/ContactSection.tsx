@@ -1,21 +1,22 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  LoaderCircle,
+  Mail,
+  MapPin,
+  Send,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { contactData, socialLinks } from "@/data/portfolio-data";
+import { useContactSection } from "@/hooks/useContactSection";
 
 const ContactSection = () => {
-  const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({ title: contactData.toast.title, description: contactData.toast.description });
-    setForm({ name: "", email: "", message: "" });
-  };
+  const { isLoading, handleSubmit } = useContactSection({ setForm });
 
   return (
     <section id="contact" className="py-24 bg-secondary/30">
@@ -39,13 +40,18 @@ const ContactSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-heading font-bold mb-4 text-foreground">{contactData.heading}</h3>
+            <h3 className="text-xl font-heading font-bold mb-4 text-foreground">
+              {contactData.heading}
+            </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               {contactData.description}
             </p>
 
             <div className="space-y-4">
-              <a href={socialLinks.email} className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href={socialLinks.email}
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Mail className="h-5 w-5 text-primary" />
                 {contactData.email}
               </a>
@@ -56,13 +62,26 @@ const ContactSection = () => {
             </div>
 
             <div className="flex gap-4 mt-8">
-              <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+              >
                 <Github className="h-5 w-5" />
               </a>
-              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href={socialLinks.email} className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
+              <a
+                href={socialLinks.email}
+                className="bg-secondary border border-border rounded-xl p-3 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+              >
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -77,6 +96,7 @@ const ContactSection = () => {
             className="space-y-4"
           >
             <Input
+              name="name"
               placeholder="Your Name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -84,6 +104,7 @@ const ContactSection = () => {
               className="bg-card border-border"
             />
             <Input
+              name="email"
               type="email"
               placeholder="Your Email"
               value={form.email}
@@ -92,6 +113,7 @@ const ContactSection = () => {
               className="bg-card border-border"
             />
             <Textarea
+              name="message"
               placeholder="Your Message"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -99,8 +121,22 @@ const ContactSection = () => {
               rows={5}
               className="bg-card border-border"
             />
-            <Button type="submit" className="w-full gap-2">
-              <Send className="h-4 w-4" /> Send Message
+            <Button
+              type="submit"
+              className="w-full gap-2 disabled:cursor-not-allowed"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <LoaderCircle className="h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" />
+                  Send Message
+                </>
+              )}
             </Button>
           </motion.form>
         </div>
