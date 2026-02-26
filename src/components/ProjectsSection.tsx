@@ -1,15 +1,26 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { projectsData } from "@/data/portfolio-data";
 import { useState } from "react";
 import { PROJECTS_INITIAL_DISPLAY_COUNT } from "@/constants/cards";
 
 const ProjectsSection = () => {
-  const [showAll, setShowAll] = useState(false);
-  const displayedProjects = showAll ? projectsData : projectsData.slice(0, PROJECTS_INITIAL_DISPLAY_COUNT);
-  const hasMoreProjects = projectsData.length > PROJECTS_INITIAL_DISPLAY_COUNT;
+  const [visibleCount, setVisibleCount] = useState(PROJECTS_INITIAL_DISPLAY_COUNT);
+  const hasMoreProjects = projectsData.length > visibleCount;
+  const showingAll = visibleCount >= projectsData.length;
+  const displayedProjects = projectsData.slice(0, visibleCount);
+
+  const handleShowMore = () => {
+    if (showingAll) setVisibleCount(PROJECTS_INITIAL_DISPLAY_COUNT);
+    else setVisibleCount((prev) => Math.min(prev + PROJECTS_INITIAL_DISPLAY_COUNT, projectsData.length));
+  };
+
+  // Calculate how many blurred previews to show
+  const remaining = projectsData.length - visibleCount;
+  // For mobile: 1 preview, for md: up to 2, for lg: up to 3
+  const previewCount = Math.min(remaining, 3);
+  const previewProjects = Array.from({ length: previewCount }, (_, idx) => projectsData[visibleCount + idx]);
 
   return (
     <section id="projects" className="py-24 bg-secondary/30">
@@ -26,7 +37,7 @@ const ProjectsSection = () => {
           <div className="section-divider w-24 mx-auto mb-12" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {displayedProjects.map((project, i) => (
             <motion.div
               key={`${project.title}-${i}`}
@@ -34,66 +45,89 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+              className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col"
             >
-              <div className="h-48 bg-secondary flex items-center justify-center text-5xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent group-hover:from-primary/10 transition-all" />
-                {project.image}
-              </div>
-
-              <div className="p-6">
+              <div className="p-6 flex flex-col h-full">
                 <h3 className="text-lg font-heading font-bold text-foreground mb-2">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">
                   {project.description}
                 </p>
-
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.tech.map((t) => (
-                    <Badge
-                      key={t}
-                      variant="secondary"
-                      className="text-xs bg-secondary border-border"
-                    >
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="flex-1 gap-2"
-                    asChild
-                  >
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tech.map((t) => (
+                      <Badge
+                        key={t}
+                        variant="secondary"
+                        className="text-xs bg-secondary border-border"
+                      >
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 rounded-md border border-border bg-transparent px-3 py-1.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
                     >
                       <Github className="h-4 w-4" /> Code
                     </a>
-                  </Button>
-                  {project.demo && (
-                    <Button size="sm" className="flex-1 gap-2" asChild>
+                    {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" /> Live
                       </a>
-                    </Button>
-                  )}
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {hasMoreProjects && previewProjects.map((preview, idx) => (
+            <motion.div
+              key={`preview-${visibleCount + idx}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
+              className={
+                `group bg-card border border-border rounded-2xl overflow-hidden blur-sm pointer-events-none select-none opacity-50 h-full flex flex-col ` +
+                (idx > 0 ? 'hidden ' : '') +
+                (idx === 1 ? 'md:flex ' : '') +
+                (idx === 2 ? 'lg:flex ' : '')
+              }
+            >
+              <div className="p-6 flex flex-col h-full">
+                <h3 className="text-lg font-heading font-bold text-foreground mb-2">
+                  {preview?.title || ''}
+                </h3>
+                <div className="space-y-2 mb-4 flex-1">
+                  <div className="h-3 bg-muted rounded w-full" />
+                  <div className="h-3 bg-muted rounded w-3/4" />
+                </div>
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {(preview?.tech || []).slice(0, 3).map((t) => (
+                      <Badge key={t} variant="secondary" className="text-xs bg-secondary border-border">
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="h-8 bg-muted rounded w-full" />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {hasMoreProjects && (
+        {(hasMoreProjects || showingAll) && projectsData.length > PROJECTS_INITIAL_DISPLAY_COUNT && (
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -101,16 +135,23 @@ const ProjectsSection = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex justify-center mt-12"
           >
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => setShowAll(!showAll)}
-              className="gap-2"
+            <button
+              onClick={handleShowMore}
+              className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
-              {showAll
-                ? "Show Less"
-                : `Show All Projects (${projectsData.length})`}
-            </Button>
+              <span className="text-sm font-medium">
+                {showingAll
+                  ? "Show Less"
+                  : `Show ${Math.min(PROJECTS_INITIAL_DISPLAY_COUNT, projectsData.length - visibleCount)} More`}
+              </span>
+              <motion.div
+                animate={{ rotate: showingAll ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-gold-light flex items-center justify-center shadow-lg shadow-primary/30"
+              >
+                <ChevronDown className="h-5 w-5 text-white hover:scale-110 ease-in duration-100" />
+              </motion.div>
+            </button>
           </motion.div>
         )}
       </div>

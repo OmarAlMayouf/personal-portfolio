@@ -114,28 +114,41 @@ export const skillsData = [
   {
     title: "Frontend",
     skills: [
-      { name: "React", level: 82 },
-      { name: "TypeScript", level: 88 },
-      { name: "HTML/CSS", level: 88 },
-      { name: "Tailwind CSS", level: 95 },
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "Redux" },
+      { name: "React Query" },
+      { name: "Tailwind CSS" },
+      { name: "HTML/CSS" },
+      { name: "Responsive design" },
+      { name: "Performance optimization" },
+      { name: "Figma" },
+      { name: "Jest" },
     ],
   },
   {
     title: "Backend",
     skills: [
-      { name: "Spring Boot", level: 80 },
-      { name: "Java", level: 86 },
-      { name: "REST APIs", level: 80 },
-      { name: "JWT Security", level: 74 },
-      { name: "Redis", level: 70 },
+      { name: "Java" },
+      { name: "Spring Boot" },
+      { name: "REST APIs" },
+      { name: "JWT" },
+      { name: "Redis" },
+      { name: "JUnit" },
+      { name: "Mockito" },
+      { name: "Swagger/OpenAPI" },
     ],
   },
   {
     title: "Database & Tools",
     skills: [
-      { name: "PostgreSQL", level: 80 },
-      { name: "Git", level: 86 },
-      { name: "GitLab", level: 85 },
+      { name: "PostgreSQL" },
+      { name: "SQLite" },
+      { name: "Git" },
+      { name: "GitLab" },
+      { name: "Docker" },
+      { name: "CI/CD" },
+      { name: "Jira" },
     ],
   },
 ];
@@ -144,26 +157,127 @@ export const skillsData = [
 export const projectsData = [
   {
     title: "Spring Redis Rate Limiter",
-    description: "",
-    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
-    image: "",
-    github: "https://github.com",
+    description:
+      "An open-source, annotation-based distributed rate limiter built with Spring Boot and Redis. Supports dynamic rate limiting using SpEL for per-user, per-email, per-IP, or global limits. Designed for multi-instance deployments using Redis atomic operations and Spring AOP.",
+    tech: ["Java", "Spring Boot", "Redis", "Spring AOP", "Distributed Systems"],
+    github: "https://github.com/OmarAlMayouf/spring-redis-ratelimiter",
     demo: "",
   },
   {
-    title: "Spring Redis Rate Limiter",
-    description: "",
-    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
-    image: "",
-    github: "https://github.com",
+    title: "Pharmaseek - Mobile App (Graduation Project)",
+    description:
+      "A mobile application that aggregates pharmacy databases into one platform, allowing users to search medicines, compare prices, locate nearby pharmacies in Riyadh, and set medicine reminders.",
+    tech: [
+      "React Native",
+      "JavaScript",
+      "Tailwind CSS",
+      "Appwrite",
+      "Figma",
+      "Agile",
+    ],
+    github: "https://github.com/OmarAlMayouf/Pharmaseek",
     demo: "",
   },
   {
-    title: "Spring Redis Rate Limiter",
-    description: "",
-    tech: ["Java", "Spring Boot", "Redis", "Back-End Web Development"],
-    image: "",
-    github: "https://github.com",
+    title: "Pharmaseek - Web App (Graduation Project)",
+    description:
+      "A web application for admins that allows them to manage pharmacy inventory such as adding, editing, and removing entries per branch, managing branches, view dashboard analytics, and handle user inquiries.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Appwrite",
+      "Figma",
+      "Agile",
+    ],
+    github: "https://github.com/OmarAlMayouf/Pharmaseek-Admin-Portal",
+    demo: "",
+  },
+  {
+    title: "Dev Daily Tasks",
+    description:
+      "A modern productivity tool for developers with clean kanban-style interface to manage their daily tasks and improve focus. Features include dark mode, task prioritization, filtering, custom settings, and more.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "Shadcn-ui"],
+    github: "https://github.com/OmarAlMayouf/dev-daily-tasks",
+    demo: "https://omaralmayouf.github.io/dev-daily-tasks",
+  },
+  {
+    title: "Pharmacy Inventory Management System",
+    description:
+      "A web-based system for managing pharmacy inventory, tracking stock levels and expiration dates. Built with Django backend and a responsive Bootstrap-based frontend.",
+    tech: ["Django", "SQLite", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    github: "https://github.com/OmarAlMayouf/IS424-Project",
+    demo: "",
+  },
+  {
+    title: "Movie & TV Show Ratings Web App",
+    description:
+      "A web application that allows users to browse, rate, and explore movies and TV shows with an interactive interface powered by React and Firebase.",
+    tech: ["React", "Vite", "Firebase", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/OmarAlMayouf/Movie_Ratings",
+    demo: "https://omaralmayouf.github.io/Movie_Ratings/",
+  },
+    {
+    title: "Car Sales App",
+    description:
+      "A C2C mobile app enabling users to buy and sell cars securely. Features vehicle listings, browsing, and direct user communication in a clean and responsive interface.",
+    tech: ["React Native", "JavaScript", "Appwrite", "Tailwind CSS"],
+    github: "https://github.com/OmarAlMayouf/CarSalesApp",
+    demo: "",
+  },
+  {
+    title: "Note Sharing App",
+    description:
+      "A collaborative note-sharing mobile app with real-time push notifications. Users can share notes within groups and receive instant updates when new content is posted.",
+    tech: ["React Native", "JavaScript", "Tailwind CSS", "Appwrite"],
+    github: "https://github.com/OmarAlMayouf/NoteSharingApp",
+    demo: "",
+  },
+  {
+    title: "RSA Encryption System",
+    description:
+      "A Python-based RSA encryption system with a GUI that demonstrates asymmetric cryptography, allowing users to generate keys, encrypt messages, and decrypt ciphertext.",
+    tech: ["Python", "Tkinter", "RSA Algorithm", "Cryptography"],
+    github: "https://github.com/OmarAlMayouf/RSAProject",
+    demo: "",
+  },
+  {
+    title: "Server-Client Restaurant Management System",
+    description:
+      "A client-server restaurant management system using socket programming for real-time order processing and inventory updates.",
+    tech: ["Python", "Socket Programming", "SQLite", "Tkinter"],
+    github:
+      "https://github.com/OmarAlMayouf/server_client_python_resturant_managment_system",
+    demo: "",
+  },
+  {
+    title: "Mini Database Management System (DBMS)",
+    description:
+      "A custom-built relational database system in Java implementing B+ tree indexing, query processing (joins, aggregation), buffer pool management, and ACID-compliant transactions.",
+    tech: [
+      "Java",
+      "B+ Trees",
+      "Concurrency Control",
+      "JUnit",
+      "Database Design",
+    ],
+    github: "https://github.com/faresdu/DBMS335",
+    demo: "",
+  },
+  {
+    title: "Advanced News Classifier",
+    description:
+      "A machine learning news classifier using GloVe embeddings and Deeplearning4J to improve contextual understanding and semantic accuracy in text classification.",
+    tech: ["Java", "NLP", "GloVe", "Deeplearning4J", "Machine Learning"],
+    github: "https://github.com/sattamalmuwallad/Advanced-News-Classifier",
+    demo: "",
+  },
+  {
+    title: "News Classifier (TF-IDF)",
+    description:
+      "A text classification system trained on news articles using TF-IDF embeddings to categorize content based on semantic similarity.",
+    tech: ["Java", "TF-IDF", "NLP", "Machine Learning"],
+    github: "https://github.com/sattamalmuwallad/News-Classifier",
     demo: "",
   },
 ];

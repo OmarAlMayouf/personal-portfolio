@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { skillsData } from "@/data/portfolio-data";
+import { Badge } from "@/components/ui/badge";
 
 const SkillsSection = () => {
   return (
@@ -17,7 +18,7 @@ const SkillsSection = () => {
           <div className="section-divider w-24 mx-auto mb-12" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {skillsData.map((cat, catIndex) => (
             <motion.div
               key={cat.title}
@@ -25,26 +26,25 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: catIndex * 0.15 }}
-              className="bg-card border border-border rounded-2xl p-6"
+              className="bg-card border border-border rounded-2xl p-8 flex flex-col items-center shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
-              <h3 className="text-lg font-heading font-bold text-primary mb-6">{cat.title}</h3>
-              <div className="space-y-5">
+              <h3 className="text-lg font-heading font-bold text-primary mb-4 tracking-wide text-center">{cat.title}</h3>
+              <div className="w-full flex flex-wrap justify-center gap-2">
                 {cat.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-foreground font-medium">{skill.name}</span>
-                      <span className="text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-primary to-gold-light"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                      />
-                    </div>
-                  </div>
+                  <motion.div
+                    key={skill.name}
+                    whileHover={{ scale: 1.13, rotate: -3 }}
+                    whileTap={{ scale: 0.97, rotate: 3 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    className="inline-block"
+                  >
+                    <Badge
+                      variant="secondary"
+                      className="text-sm bg-secondary border-border px-3 py-1 rounded-full cursor-pointer transition-colors duration-200 hover:bg-primary/80 hover:text-white"
+                    >
+                      {skill.name}
+                    </Badge>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
