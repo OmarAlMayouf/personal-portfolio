@@ -50,5 +50,4 @@ src/
 ```
 
 ---
-
-Made with ❤️ by **Omar Almayouf**
+&copy; 2026 Omar Almayouf. All rights reserved.
