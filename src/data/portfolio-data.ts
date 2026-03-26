@@ -199,7 +199,7 @@ export const projectsData = [
       "EmailJS",
     ],
     github: "https://github.com/OmarAlMayouf/personal-portfolio",
-    demo: "https://omaralmayouf.github.io/personal-portfolio",
+    demo: "https://omaralmayouf.com",
   },
   {
     title: "Dev Daily Tasks",
