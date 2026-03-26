@@ -3,8 +3,8 @@
 Welcome to my personal portfolio website.  
 This project showcases my skills, projects, and experience in a modern and responsive design.
 
-**🚀 Live Website:**  
-https://omaralmayouf.github.io/personal-portfolio
+**🚀 Live Website:**
+https://omaralmayouf.com
 
 ---
 
@@ -27,7 +27,7 @@ This project is built using:
 - Clean and minimal interface
 - Contact form with email sending functionality
 - Optimized for performance
-- Deployed on GitHub Pages
+- Deployed on Vercel
 
 ---
 
